@@ -28,7 +28,7 @@ export const getSecretWord = () => {
     return axios
       .get('https://random-word-api.herokuapp.com/word?number=1')
       .then((res) => {
-        dispatch({ type: actionTypes.SET_SECRET_WORD, payload: res.data });
+        dispatch({ type: actionTypes.SET_SECRET_WORD, payload: res.data[0] });
       });
   };
 };

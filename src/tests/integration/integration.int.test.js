@@ -2,7 +2,7 @@ import { storeFactory } from '../testUtils';
 import { guessWord } from '../../actions/';
 
 const secretWord = 'party';
-const unsuccessfulGuees = 'train';
+const unsuccessfulGuess = 'train';
 describe('guessWord', () => {
   describe('no guessed words', () => {
     let store;
@@ -11,14 +11,14 @@ describe('guessWord', () => {
       store = storeFactory(initialState);
     });
     test('updates state correctly for unsuccessful guess', () => {
-      store.dispatch(guessWord(unsuccessfulGuees));
+      store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
         ...initialState,
         success: false,
         guessedWords: [
           {
-            guessedWord: unsuccessfulGuees,
+            guessedWord: unsuccessfulGuess,
             letterMatchCount: 3,
           },
         ],
@@ -51,14 +51,14 @@ describe('guessWord', () => {
       store = storeFactory(initialState);
     });
     test('updates state correctly for unsuccessful guess', () => {
-      store.dispatch(guessWord(unsuccessfulGuees));
+      store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
         secretWord,
         success: false,
         guessedWords: [
           ...guessedWords,
-          { guessedWord: unsuccessfulGuees, letterMatchCount: 3 },
+          { guessedWord: unsuccessfulGuess, letterMatchCount: 3 },
         ],
       };
       expect(newState).toStrictEqual(expectedState);

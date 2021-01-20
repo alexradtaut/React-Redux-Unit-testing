@@ -10,7 +10,7 @@ describe('getSecretWord', () => {
     moxios.uninstall();
   });
   test('adds response word to state', () => {
-    const secretWord = 'party';
+    const secretWord = ['party'];
     const store = storeFactory();
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -22,7 +22,7 @@ describe('getSecretWord', () => {
 
     return store.dispatch(getSecretWord()).then(() => {
       const newState = store.getState();
-      expect(newState.secretWord).toBe(secretWord);
+      expect(newState.secretWord).toBe(secretWord[0]);
     });
   });
 });
